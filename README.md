@@ -2,9 +2,27 @@
 
 책의 장별 예제 코드를 모아두는 저장소입니다.
 
+## Tech Stack
+
+- React 19
+- TypeScript 7
+- Vite 8
+- TanStack Router
+- Vitest
+
+## Getting Started
+
+```bash
+npm install
+npm run dev
+```
+
+개발 서버는 기본적으로 `http://localhost:3000`에서 실행됩니다.
+
 ## Folder Structure
 
 ```text
+src/
 ch01/
 ch02/
 ...
@@ -26,6 +44,41 @@ ch01/
 ```
 
 스터디 회차나 날짜 정보처럼 장 전체에 해당하는 내용은 각 장의 `README.md`에 기록합니다. 개인별 예제 코드와 정리는 각자 이름의 Markdown 파일에 기록합니다.
+
+## Example Runner
+
+브라우저에서 실행되는 예제 코드는 `src/examples` 아래에 둡니다.
+
+```text
+src/examples/
+  ch01/
+    yeji/
+      Example.tsx
+```
+
+예제를 화면에 연결하려면 `src/examples/registry.ts`에 등록합니다.
+
+```ts
+import YejiChapter01Example from "@/examples/ch01/yeji/Example";
+
+export const exampleEntries = [
+  {
+    chapterId: "ch01",
+    memberId: "yeji",
+    title: "Chapter 01 예제",
+    description: "예제 설명",
+    Component: YejiChapter01Example,
+  },
+];
+```
+
+팀원 ID는 아래 값을 사용합니다.
+
+- `jihyun`: 지현
+- `yeji`: 예지
+- `juhye`: 주혜
+- `juntae`: 준태
+- `changjun`: 창준
 
 ## Chapter README
 

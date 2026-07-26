@@ -11,7 +11,7 @@ export const chapters: Chapter[] = Array.from({ length: 17 }, (_, index) => {
 });
 
 export const members: StudyMember[] = [
-  { id: "jihyun", name: "지현" },
+  { id: "jihyeon", name: "지현" },
   { id: "yeji", name: "예지" },
   { id: "juhye", name: "주혜" },
   { id: "juntae", name: "준태" },

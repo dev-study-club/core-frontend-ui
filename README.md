@@ -19,6 +19,21 @@ npm run dev
 
 개발 서버는 기본적으로 `http://localhost:3000`에서 실행됩니다.
 
+## Deployment
+
+Vercel에서 GitHub 저장소를 연결하면 `main` 브랜치에 push될 때마다 자동으로 배포됩니다.
+
+Vercel 프로젝트 설정은 아래 값을 사용합니다.
+
+```text
+Framework Preset: Vite
+Install Command: npm install
+Build Command: npm run build
+Output Directory: dist
+```
+
+SPA 라우팅을 위해 `vercel.json`에서 모든 경로를 `index.html`로 rewrite합니다.
+
 ## Folder Structure
 
 ```text

@@ -21,18 +21,21 @@ npm run dev
 
 ## Deployment
 
-Vercel에서 GitHub 저장소를 연결하면 `main` 브랜치에 push될 때마다 자동으로 배포됩니다.
+GitHub Pages로 배포합니다. `main` 브랜치에 push되면 GitHub Actions가 빌드 후 Pages에 배포합니다.
 
-Vercel 프로젝트 설정은 아래 값을 사용합니다.
+처음 한 번만 GitHub 저장소에서 아래 설정을 켭니다.
 
 ```text
-Framework Preset: Vite
-Install Command: npm install
-Build Command: npm run build
-Output Directory: dist
+Settings > Pages > Build and deployment > Source > GitHub Actions
 ```
 
-SPA 라우팅을 위해 `vercel.json`에서 모든 경로를 `index.html`로 rewrite합니다.
+배포 주소:
+
+```text
+https://dev-study-club.github.io/core-frontend-ui/
+```
+
+Vite는 GitHub Pages 빌드에서 `/core-frontend-ui/` base path를 사용합니다. SPA 라우팅 새로고침 대응을 위해 workflow에서 `dist/index.html`을 `dist/404.html`로 복사합니다.
 
 ## Folder Structure
 

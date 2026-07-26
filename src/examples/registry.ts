@@ -1,4 +1,6 @@
 import YejiChapter01Example from "@/examples/ch01/yeji/Example";
+import JuhyeChapter01Example from "@/examples/ch01/juhye/ch1";
+
 import type { ChapterId, ExampleEntry, MemberId } from "@/types/study";
 
 export const exampleEntries: ExampleEntry[] = [
@@ -8,6 +10,14 @@ export const exampleEntries: ExampleEntry[] = [
     title: "Chapter 01 예제",
     description: "예제 코드를 추가하는 위치를 보여주는 기본 샘플입니다.",
     Component: YejiChapter01Example,
+  },
+
+  {
+    chapterId: "ch01",
+    memberId: "juhye",
+    title: "Chapter 01 예제",
+    description: "예제 코드를 추가하는 위치를 보여주는 기본 샘플입니다.",
+    Component: JuhyeChapter01Example,
   },
 ];
 
@@ -19,4 +29,3 @@ export function findExample(
     (entry) => entry.chapterId === chapterId && entry.memberId === memberId,
   );
 }
-

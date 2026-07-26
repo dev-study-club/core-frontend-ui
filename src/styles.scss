@@ -1,0 +1,304 @@
+:root {
+  color: #222326;
+  background: #fafafa;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: sans-serif;
+  margin: 0;
+}
+
+body {
+  min-width: 320px;
+  overflow-y: scroll;
+  padding-left: 200px;
+
+  &.no-scroll {
+    // 페이지 전체에 overflow: hidden을 적용하기 위한 용도입니다. 모달이나 팝오버 등을 호출할 때 배경 화면의 스크롤 동작을 막기 위해 사용됩니다.
+    overflow: hidden;
+  }
+}
+
+button,
+a {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+aside {
+  // 좌측에 고정되는 메뉴(GNB)에 대한 스타일입니다.
+  --bg-default: #222;
+  --bg-list: #444;
+  --bg-list-disabled: #303030;
+  --bg-list-active: #58a;
+  --bg-list-open: #457;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 0;
+  width: 199px;
+  border-right: 1px solid var(--bg-default);
+  background-color: var(--bg-default);
+  color: #fff;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button {
+    display: block;
+    width: 100%;
+    border: 0;
+    background-color: inherit;
+    color: inherit;
+    font-size: inherit;
+    margin: 0;
+    text-align: left;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+
+  h1 {
+    margin: 0;
+    padding: 20px;
+    overflow: hidden;
+
+    sub {
+      float: right;
+      opacity: 0.7;
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-list);
+  }
+
+  li {
+    // GNB의 각 메뉴에 대한 스타일입니다. 하위 요소가 없으면 a 태그만, 하위 요소가 있으면 subRoutes 클래스를 부여한 ul 태그가
+    // 추가될 수 있습니다. 현재 페이지에 해당하는 메뉴에는 active 클래스를, 현재 페이지가 포함된 상위 메뉴에는 open 클래스를, 링크가
+    // 아직 준비되지 않은 메뉴에는 disabled 클래스를 부여할 계획입니다.
+    border-top: 1px solid var(--bg-default);
+    transition: background-color ease 0.3s;
+
+    &.active {
+      background-color: var(--bg-list-active);
+      font-weight: 700;
+    }
+
+    &.open {
+      background-color: var(--bg-list-open);
+      font-weight: 700;
+    }
+
+    a {
+      display: block;
+      padding: 10px 20px 10px 25px;
+    }
+
+    &.disabled {
+      display: block;
+      padding: 10px 20px 10px 25px;
+      color: #666;
+      background-color: var(--bg-list-disabled);
+      cursor: not-allowed;
+    }
+  }
+
+  .subRoutes {
+    // 하위 메뉴인 subRoutes에 대한 스타일입니다. UI 요소 중에는 여러 가지 기법으로 작성한 컴포넌트들을 모두 한 화면에서 렌더링
+    // 하더라도 문제가 되지 않는 경우도 있지만, 상황에 따라 한 화면에 하나의 컴포넌트만 렌더링 해야 하는 경우도 있습니다. 대표적으로
+    // 스크롤에 따라 동작하는 무한 스크롤 기능이 그러합니다. 이런 경우 상위 메뉴에 parent 클래스를 부여하고, 하위에 subRoutes를 두어
+    // 각 페이지를 구분할 수 있도록 할 것입니다.
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    background-color: var(--bg-list-open);
+    transition-property: height, opacity;
+    transition-timing-function: ease;
+    transition-duration: 0.3s;
+
+    a {
+      padding-left: 33px;
+
+      &::before {
+        content: "";
+        display: inline-block;
+        border: 2px solid #fff;
+        border-radius: 2px;
+        margin-right: 8px;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  li.parent > a::before {
+    content: "";
+    display: inline-block;
+    vertical-align: 2px;
+    border: 4px solid transparent;
+    border-left-color: #fff;
+    margin-right: 4px;
+    margin-left: -12px;
+  }
+
+  li.open {
+    .subRoutes {
+      opacity: 1;
+    }
+
+    @for $i from 1 to 10 {
+      // 하위 메뉴의 개수에 따라 높이 값이 달라지는데, 열고 닫히는 애니메이션 효과를 자연스럽게 표현하기 위해서는 각각의 높이를
+      // 정확히 알고 있어야 합니다. 프로젝트 전반에 걸쳐 하위 메뉴의 개수는 아무리 많아도 10개를 넘지는 않을 것이므로, 미리 10개까지의
+      // 개수별 높이를 만들어 두기로 했습니다. 이를 위해 SASS에서 자바스크립트의 for 문과 같은 동작을 하는 @for 명령어를 이용하여,
+      // 변수 $i를 1부터 10까지 바꿔가며 높이를 지정했습니다. 하위 메뉴가 3개이면 'items-3'을, 4개이면 'items-4'라는 클래스를 부여할
+      // 계획입니다.
+      &.items-#{$i} .subRoutes {
+        height: calc(#{$i} * 40px);
+      }
+    }
+
+    &.parent > a::before {
+      border-top-color: #fff;
+      border-left-color: transparent;
+      vertical-align: 0;
+      margin-right: 6px;
+      margin-left: -14px;
+    }
+  }
+}
+
+main {
+  box-sizing: border-box;
+  min-height: 100%;
+  width: min(1120px, 100%);
+  padding: 20px;
+
+  h3 > sub::before {
+    content: "|";
+    margin: 0 5px 0 10px;
+    color: #999;
+  }
+}
+
+.page-heading {
+  max-width: 680px;
+  margin-bottom: 28px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: #246b5b;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 12px;
+  font-size: 2.2rem;
+  line-height: 1.16;
+}
+
+h2 {
+  margin-bottom: 14px;
+  font-size: 1.05rem;
+}
+
+p {
+  color: #616269;
+  line-height: 1.65;
+}
+
+.back-link,
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 24px;
+  color: #1f6659;
+  font-weight: 700;
+}
+
+.example-surface {
+  min-height: 360px;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 28px;
+}
+
+.empty-example,
+.example-demo,
+.page-state {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  min-height: 300px;
+}
+
+.empty-example {
+  color: #4b4d52;
+}
+
+.primary-button {
+  min-height: 40px;
+  border: 0;
+  border-radius: 6px;
+  padding: 0 16px;
+  color: #ffffff;
+  background: #1f6659;
+  cursor: pointer;
+}
+
+.primary-button:hover,
+.primary-button:focus-visible {
+  outline: 2px solid #1f6659;
+  outline-offset: 3px;
+  background: #164d43;
+}
+
+@media (max-width: 640px) {
+  body {
+    padding-left: 0;
+  }
+
+  aside {
+    position: static;
+    width: 100%;
+    border-right: 0;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  .example-surface {
+    padding: 20px;
+  }
+}

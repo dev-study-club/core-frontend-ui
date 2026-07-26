@@ -1,14 +1,29 @@
-import { Link, useParams } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { ChevronLeft } from "lucide-react";
 import { EmptyExample } from "@/components/shared/ui/EmptyExample";
 import { findExample } from "@/examples/registry";
 import { chapters, members } from "@/studyData";
-import type { ChapterExampleParams } from "@/routes/router";
+import type { ChapterId, MemberId } from "@/types/study";
 
-export function ChapterExamplePage() {
-  const { chapterId, memberId } = useParams({
-    from: "/$chapterId/$memberId",
-  }) as ChapterExampleParams;
+interface ChapterExamplePageProps {
+  chapterId?: ChapterId;
+  memberId?: MemberId;
+}
+
+export function ChapterExamplePage({
+  chapterId,
+  memberId,
+}: ChapterExamplePageProps) {
+  if (!chapterId || !memberId) {
+    return (
+      <section className="page-state" aria-labelledby="not-found-title">
+        <h1 id="not-found-title">예제를 찾을 수 없습니다</h1>
+        <Link to="/" className="text-link">
+          홈으로 돌아가기
+        </Link>
+      </section>
+    );
+  }
 
   const chapter = chapters.find((item) => item.id === chapterId);
   const member = members.find((item) => item.id === memberId);
@@ -50,4 +65,3 @@ export function ChapterExamplePage() {
     </section>
   );
 }
-

@@ -1,7 +1,9 @@
 import { Link } from "@tanstack/react-router";
+import classNames from "classnames";
 import { ArrowRight } from "lucide-react";
-import { chapters, members } from "@/studyData";
 import { findExample } from "@/examples/registry";
+import { chapters, members } from "@/studyData";
+import styles from "./Home.module.scss";
 
 export function HomePage() {
   return (
@@ -15,11 +17,11 @@ export function HomePage() {
         </p>
       </div>
 
-      <div className="chapter-grid">
+      <div className={styles.chapterGrid}>
         {chapters.map((chapter) => (
-          <article key={chapter.id} className="chapter-card">
+          <article key={chapter.id} className={styles.chapterCard}>
             <h2>{chapter.title}</h2>
-            <div className="member-link-list">
+            <div className={styles.memberLinkList}>
               {members.map((member) => {
                 const example = findExample(chapter.id, member.id);
 
@@ -28,7 +30,10 @@ export function HomePage() {
                     key={member.id}
                     to="/$chapterId/$memberId"
                     params={{ chapterId: chapter.id, memberId: member.id }}
-                    className="member-link"
+                    className={classNames(styles.memberLink, {
+                      [styles.ready]: example,
+                      [styles.pending]: !example,
+                    })}
                   >
                     <span>
                       {member.name}

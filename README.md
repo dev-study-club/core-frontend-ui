@@ -8,7 +8,13 @@
 - TypeScript 7
 - Vite 8
 - TanStack Router
+- classnames
+- Sass Modules
 - Vitest
+
+## Package Manager
+
+이 프로젝트는 npm을 사용합니다. `package-lock.json`을 기준으로 의존성을 관리합니다.
 
 ## Getting Started
 

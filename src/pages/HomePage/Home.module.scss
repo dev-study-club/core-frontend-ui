@@ -1,0 +1,45 @@
+.chapterGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.chapterCard {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 18px;
+}
+
+.memberLinkList {
+  display: grid;
+  gap: 8px;
+}
+
+.memberLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 38px;
+  border-radius: 6px;
+  padding: 0 10px;
+  color: #33353a;
+  background: #f3f4f2;
+
+  &:hover,
+  &:focus-visible {
+    outline: 2px solid #1f7a68;
+    outline-offset: 2px;
+    background: #e8f2ef;
+  }
+}
+
+.ready {
+  color: #164d43;
+  background: #e8f2ef;
+}
+
+.pending {
+  color: #616269;
+}
+

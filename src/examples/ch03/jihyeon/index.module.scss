@@ -1,0 +1,116 @@
+.Tooltips {
+  color: #202d2b;
+
+  .tooltip-root {
+    display: inline;
+    margin-right: 10px;
+    font-size: 1rem;
+    line-height: 1.8rem;
+  }
+
+  h2 {
+    margin: 0 0 10px;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+  }
+
+  .description {
+    max-width: 48ch;
+    margin: 0 0 32px;
+    color: #61716d;
+    line-height: 1.7;
+  }
+
+  .example {
+    margin-bottom: 28px;
+  }
+
+  h3 {
+    margin: 0 0 10px;
+    font-size: 1rem;
+
+    sub {
+      color: #61716d;
+      font-size: 0.85em;
+      font-weight: 400;
+    }
+  }
+
+  .tooltip-trigger {
+    position: relative;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-left: 4px;
+    padding: 0;
+    border: 1px solid #246b5b;
+    border-radius: 50%;
+    background: #fff;
+    color: #246b5b;
+    cursor: pointer;
+    list-style: none;
+    vertical-align: middle;
+
+    &::after {
+      content: "i";
+      display: block;
+      font-family: serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      line-height: 16px;
+      text-align: center;
+    }
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &.open,
+    &:focus-visible {
+      border-color: #b74d2e;
+      color: #b74d2e;
+      outline: 0;
+    }
+  }
+
+  .tooltip-layer,
+  .anchor-target {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    z-index: 2;
+    width: min(300px, calc(100vw - 48px));
+    padding: 9px 12px;
+    border: 1px solid #202d2b;
+    border-radius: 6px;
+    background: #202d2b;
+    color: #fff;
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .details {
+    position: relative;
+    display: inline-block;
+  }
+
+  .details[open] .tooltip-trigger {
+    border-color: #b74d2e;
+    color: #b74d2e;
+  }
+
+  .anchor[open] {
+    anchor-name: --tooltip-anchor;
+  }
+
+  .anchor-target {
+    display: none;
+  }
+
+  .anchor[open] + .anchor-target {
+    display: block;
+    position-anchor: --tooltip-anchor;
+    top: anchor(bottom);
+    left: anchor(right);
+    position-try: flip-inline, flip-block;
+  }
+}

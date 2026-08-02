@@ -4,6 +4,7 @@ import { ChapterExamplePage } from "@/pages/ChapterExamplePage";
 import { HomePage } from "@/pages/HomePage";
 import { chapters, members } from "@/studyData";
 import type { ChapterId, MemberId } from "@/types/study";
+import TabMenus from "./examples/ch02/jihyeon/Example";
 
 export type RoutePath = string;
 

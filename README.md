@@ -98,7 +98,7 @@ export const exampleEntries = [
 
 팀원 ID는 아래 값을 사용합니다.
 
-- `jihyun`: 지현
+- `jihyeon`: 지현
 - `yeji`: 예지
 - `juhye`: 주혜
 - `juntae`: 준태

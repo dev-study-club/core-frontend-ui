@@ -1,8 +1,10 @@
 import ChangjunChapter01Example from "@/examples/ch01/changjun/Example";
 import JihyeonChapter01Example from "@/examples/ch01/jihyeon/Example";
+import JuhyeChapter01 from "@/examples/ch01/juhye/ch1";
 import YejiChapter01Example from "@/examples/ch01/yeji/Example";
 import ChangjunChapter02Example from "@/examples/ch02/changjun/Example";
 import JihyeonChapter02Example from "@/examples/ch02/jihyeon/Example";
+import JuhyeChapter02 from "@/examples/ch02/juhye/ch2";
 import YejiChapter02Example from "@/examples/ch02/yeji/Example";
 import JihyeonChapter03Example from "@/examples/ch03/jihyeon/Example";
 import YejiChapter03Example from "@/examples/ch03/yeji/Example";
@@ -32,6 +34,13 @@ export const exampleEntries: ExampleEntry[] = [
     Component: ChangjunChapter01Example,
   },
   {
+    chapterId: "ch01",
+    memberId: "juhye",
+    title: "Chapter 01 예제",
+    description: "예제 코드를 추가하는 위치를 보여주는 기본 샘플입니다.",
+    Component: JuhyeChapter01,
+  },
+  {
     chapterId: "ch02",
     memberId: "jihyeon",
     title: "Chapter 02 탭 메뉴",
@@ -51,6 +60,13 @@ export const exampleEntries: ExampleEntry[] = [
     title: "탭 메뉴",
     description: "리액트/바닐라로 구현한 탭 메뉴 예제 모음입니다.",
     Component: ChangjunChapter02Example,
+  },
+  {
+    chapterId: "ch02",
+    memberId: "juhye",
+    title: "Chapter 02 예제",
+    description: "예제 코드를 추가하는 위치를 보여주는 기본 샘플입니다.",
+    Component: JuhyeChapter02,
   },
   {
     chapterId: "ch03",

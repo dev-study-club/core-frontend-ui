@@ -1,11 +1,15 @@
 import ChangjunChapter01Example from "@/examples/ch01/changjun/Example";
 import JihyeonChapter01Example from "@/examples/ch01/jihyeon/Example";
+import JuhyeChapter01 from "@/examples/ch01/juhye/ch1";
 import JuntaeChapter01Example from "@/examples/ch01/juntae/Example";
 import YejiChapter01Example from "@/examples/ch01/yeji/Example";
 import ChangjunChapter02Example from "@/examples/ch02/changjun/Example";
 import JihyeonChapter02Example from "@/examples/ch02/jihyeon/Example";
+import JuhyeChapter02 from "@/examples/ch02/juhye/ch2";
 import JuntaeChapter02Example from "@/examples/ch02/juntae/Example";
+import YejiChapter02Example from "@/examples/ch02/yeji/Example";
 import JihyeonChapter03Example from "@/examples/ch03/jihyeon/Example";
+import YejiChapter03Example from "@/examples/ch03/yeji/Example";
 import JihyeonChapter04Example from "@/examples/ch04/jihyeon/Example";
 import type { ChapterId, ExampleEntry, MemberId } from "@/types/study";
 
@@ -20,8 +24,8 @@ export const exampleEntries: ExampleEntry[] = [
   {
     chapterId: "ch01",
     memberId: "yeji",
-    title: "Chapter 01 예제",
-    description: "예제 코드를 추가하는 위치를 보여주는 기본 샘플입니다.",
+    title: "Chapter 01 Accordion",
+    description: "아코디언 UI 예제입니다.",
     Component: YejiChapter01Example,
   },
   {
@@ -30,6 +34,13 @@ export const exampleEntries: ExampleEntry[] = [
     title: "아코디언",
     description: "리액트/바닐라로 구현한 아코디언 예제 모음입니다.",
     Component: ChangjunChapter01Example,
+  },
+  {
+    chapterId: "ch01",
+    memberId: "juhye",
+    title: "Chapter 01 예제",
+    description: "예제 코드를 추가하는 위치를 보여주는 기본 샘플입니다.",
+    Component: JuhyeChapter01,
   },
   {
     chapterId: "ch01",
@@ -47,10 +58,24 @@ export const exampleEntries: ExampleEntry[] = [
   },
   {
     chapterId: "ch02",
+    memberId: "yeji",
+    title: "Chapter 02 Tab Menu",
+    description: "탭 메뉴 UI 예제입니다.",
+    Component: YejiChapter02Example,
+  },
+  {
+    chapterId: "ch02",
     memberId: "changjun",
     title: "탭 메뉴",
     description: "리액트/바닐라로 구현한 탭 메뉴 예제 모음입니다.",
     Component: ChangjunChapter02Example,
+  },
+  {
+    chapterId: "ch02",
+    memberId: "juhye",
+    title: "Chapter 02 예제",
+    description: "예제 코드를 추가하는 위치를 보여주는 기본 샘플입니다.",
+    Component: JuhyeChapter02,
   },
   {
     chapterId: "ch02",
@@ -65,6 +90,13 @@ export const exampleEntries: ExampleEntry[] = [
     title: "Chapter 03 툴팁",
     description: "리액트/바닐라로 구현한 아코디언 예제 모음입니다.",
     Component: JihyeonChapter03Example,
+  },
+  {
+    chapterId: "ch03",
+    memberId: "yeji",
+    title: "Chapter 03 Tooltip",
+    description: "툴팁 UI 예제입니다.",
+    Component: YejiChapter03Example,
   },
   {
     chapterId: "ch04",

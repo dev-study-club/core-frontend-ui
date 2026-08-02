@@ -1,0 +1,227 @@
+.TabMenus {
+  .container {
+    border: 1px solid #ccc;
+  }
+  .tabList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    border-bottom: 1px solid #ccc;
+  }
+  .tab {
+    flex: 0 0 25%;
+    overflow: hidden;
+    box-sizing: border-box;
+    > button {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      text-align: left;
+      border: 0;
+      background-color: transparent;
+      cursor: pointer;
+    }
+    & + .tab {
+      border-left: 1px solid #ccc;
+    }
+    &.current > button {
+      background-color: #bde;
+    }
+  }
+  .description {
+    padding: 15px;
+  }
+  .tabMenu2 .description {
+    display: none;
+    &.current {
+      display: block;
+    }
+  }
+  .tabMenu3-1 {
+    .tab > button {
+      transition: ease-out 500ms;
+    }
+    .tabPanel {
+      position: relative;
+      overflow: hidden;
+    }
+    .description {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 15px;
+      opacity: 0;
+      transform: translateY(100%);
+      transition:
+        opacity ease-in 300ms,
+        transform ease-in 500ms;
+      &.current {
+        // position은 점진적으로 변경될 수 없는 속성이라서 즉시 반영됨
+        position: relative;
+        opacity: 1;
+        transform: translateY(0);
+        transition:
+          opacity ease-out 300ms 200ms,
+          transform ease-out 500ms;
+      }
+    }
+  }
+
+  @keyframes enter {
+    0% {
+      transform: translate(40px, 0);
+      opacity: 0;
+    }
+    100% {
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+  }
+  @keyframes exit {
+    0% {
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(0, 40px);
+      opacity: 0;
+    }
+  }
+  .tabMenu3-2 {
+    .tab > button {
+      transition: ease-out 500ms;
+    }
+    .tabPanel {
+      position: relative;
+      overflow: hidden;
+    }
+    .description {
+      // 사라지거나 이미 사라진 상세는 모두 position: absolute가 적용되어 레이아웃에 영향을 주지 않습니다.
+      // 반면, 새로 나타나거나 등장이 완료된 상세는 position: relative가 적용되어 레이아웃에 영향을 미칩니다.
+      // position 변경은 애니메이션으로 제어되지 않는 속성이므로 별도로 구분해 주었습니다.
+      position: absolute;
+      transform: translate(0, 40px);
+      opacity: 0;
+      box-sizing: border-box;
+      padding: 15px;
+      left: 0;
+      top: 0;
+      right: 0;
+      &.enter {
+        position: relative;
+        animation: enter 300ms ease-out 200ms forwards;
+      }
+      &.exit {
+        animation: exit 300ms ease-in forwards;
+      }
+      &.current {
+        position: relative;
+        transform: translate(0, 0);
+        opacity: 1;
+        transition:
+          opacity ease-out 300ms 200ms,
+          transform ease-out 500ms;
+      }
+    }
+  }
+  .tabMenu3-3 {
+    .tabPanel {
+      position: relative;
+      overflow: hidden;
+    }
+    .description {
+      overflow: hidden;
+      height: 0;
+      padding: 0;
+      position: absolute;
+      transform: translate(0, 40px);
+      opacity: 0;
+      box-sizing: border-box;
+      padding: 15px;
+      left: 0;
+      top: 0;
+      right: 0;
+      &.enter {
+        position: relative;
+        animation: enter 300ms ease-out 200ms forwards;
+      }
+      &.exit {
+        animation: exit 300ms ease-in forwards;
+      }
+      &.current {
+        position: relative;
+        transform: translate(0, 0);
+        opacity: 1;
+        transition:
+          opacity ease-out 300ms 200ms,
+          transform ease-out 500ms;
+      }
+      &.enter,
+      &.exit,
+      &.current {
+        height: auto;
+        padding: 15px;
+        // display: none을 활용한 방법도 같은 방식으로 적용할 수 있습니다. 다만 이 경우 숨겨진 탭은 페이지 검색 기능으로 내용을 찾을 수 없다는 점에 유의하세요.
+      }
+    }
+  }
+  .tabMenu5 {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    .item {
+      list-style: none;
+      .tab {
+        position: absolute;
+        top: 0;
+        width: 25%;
+        box-sizing: border-box;
+        padding: 15px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        cursor: pointer;
+        border-bottom: 1px solid #ccc;
+        border-left: 1px solid #ccc;
+      }
+      &:first-child .tab {
+        left: 0;
+        border-left: none;
+      }
+      &:nth-child(2) .tab {
+        left: 25%;
+      }
+      &:nth-child(3) .tab {
+        left: 50%;
+      }
+      &:nth-child(4) .tab {
+        left: 75%;
+      }
+      .description {
+        height: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      .input {
+        display: none;
+        &:checked {
+          + .tab {
+            background-color: #bde;
+          }
+          ~ .description {
+            margin-top: 50px;
+            height: auto;
+            padding: 15px;
+          }
+        }
+      }
+    }
+  }
+}

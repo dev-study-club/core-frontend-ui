@@ -12,9 +12,19 @@ interface ViewportSize {
   height: number;
 }
 
-const ViewportContext = createContext<ViewportSize>({
+interface ScrollInfo {
+  top: number;
+  left: number;
+}
+
+const ViewportSizeContext = createContext<ViewportSize>({
   width: 0,
   height: 0,
+});
+
+const ScrollInfoContext = createContext<ScrollInfo>({
+  top: 0,
+  left: 0,
 });
 
 interface ViewportContextProviderProps {
@@ -27,6 +37,10 @@ export default function ViewportContextProvider({
   const [viewportSize, setViewportSize] = useState<ViewportSize>(() => ({
     width: window.innerWidth,
     height: window.innerHeight,
+  }));
+  const [scrollInfo, setScrollInfo] = useState<ScrollInfo>(() => ({
+    top: window.scrollY,
+    left: window.scrollX,
   }));
 
   useEffect(() => {
@@ -44,19 +58,44 @@ export default function ViewportContextProvider({
     };
   }, []);
 
-  const value = useMemo(
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollInfo({
+        top: window.scrollY,
+        left: window.scrollX,
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const viewportValue = useMemo(
     () => viewportSize,
     [viewportSize],
   );
+  const scrollValue = useMemo(() => scrollInfo, [scrollInfo]);
 
   return (
-    <ViewportContext.Provider value={value}>
-      {children}
-    </ViewportContext.Provider>
+    <ViewportSizeContext.Provider value={viewportValue}>
+      <ScrollInfoContext.Provider value={scrollValue}>
+        {children}
+      </ScrollInfoContext.Provider>
+    </ViewportSizeContext.Provider>
   );
 }
 
 export function useViewportContext() {
-  return useContext(ViewportContext);
+  return useViewportSize();
 }
 
+export function useViewportSize() {
+  return useContext(ViewportSizeContext);
+}
+
+export function useScrollInfo() {
+  return useContext(ScrollInfoContext);
+}

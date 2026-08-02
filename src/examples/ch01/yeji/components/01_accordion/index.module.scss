@@ -1,0 +1,121 @@
+.Accordions {
+  .container {
+    border: 1px solid #ccc;
+    border-bottom: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+    overflow: hidden;
+  }
+  .tab {
+    display: block;
+    width: 100%;
+    border: 0;
+    background-color: transparent;
+    font-size: inherit;
+    text-align: left;
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+    &::before {
+      content: '+';
+      margin: 0 8px 0 -5px;
+    }
+  }
+  .description {
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+    background-color: #eff;
+  }
+  .item {
+    &.current {
+      // &는 상위의 선택자를 그대로 사용하겠다는 의미
+      .tab {
+        background-color: #ace;
+        &::before {
+          content: '-';
+        }
+      }
+    }
+  }
+  .item2 {
+    .description {
+      display: none;
+    }
+    &.current {
+      .description {
+        display: block;
+      }
+    }
+  }
+  .item3 {
+    overflow: hidden; // 1
+    .description {
+      padding: 0 15px;
+      border-bottom-width: 0;
+      max-height: 0; // 1
+      transition: ease 0.3s; // 2
+    }
+    &.current .description {
+      padding: 15px;
+      border-bottom-width: 1px;
+      max-height: 300px; // 3
+    }
+  }
+  .item5-1 {
+    overflow: hidden;
+    .input {
+      display: none;
+    }
+    .tab {
+      display: block;
+    }
+    .description {
+      padding: 0 15px;
+      border-bottom-width: 0;
+      max-height: 0;
+    }
+    .input:checked {
+      + .tab {
+        background-color: #ace;
+        &::before {
+          content: '-';
+        }
+      }
+      ~ .description {
+        padding: 15px;
+        border-bottom-width: 1px;
+        max-height: none;
+      }
+    }
+  }
+  .item5-2 {
+    summary {
+      padding: 15px;
+      border-bottom: 1px solid #ccc;
+      cursor: pointer;
+      &::marker {
+        content: '+ ';
+      }
+    }
+    .description {
+      padding: 0 15px;
+      overflow: hidden;
+    }
+    &[open] {
+      summary {
+        background-color: #ace;
+        padding: 15px;
+        border-bottom-width: 0;
+        &::marker {
+          content: '- ';
+        }
+      }
+      .description {
+        padding: 15px;
+        max-height: none;
+      }
+    }
+  }
+}

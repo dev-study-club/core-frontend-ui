@@ -1,0 +1,38 @@
+import { useState } from 'react';
+import cx from './cx';
+import data from './data';
+
+type TooltipProps = { id: string; text: string; description: string };
+const TooltipItem = ({ id, text, description }: TooltipProps) => {
+  const [isOpen, toggle] = useState(false);
+
+  const handleClick = () => {
+    toggle(prev => !prev);
+  };
+
+  return (
+    // 클릭과 터치는 버블링 되는 이벤트이므로 tooltip-layer를 클릭해도 닫힐 것
+    <span className={cx('tooltip-root')}>
+      {text}
+      <span
+        className={cx('tooltip-trigger', { open: isOpen })}
+        onClick={handleClick}
+      >
+        {isOpen && <span className={cx('tooltip-layer')}>{description}</span>}
+      </span>
+    </span>
+  );
+};
+const Tooltip1 = () => {
+  return (
+    <>
+      <h3>
+        #1. React<sub>터치 또는 클릭으로 동작하는 툴팁</sub>
+      </h3>
+      {data.map(d => (
+        <TooltipItem {...d} key={d.id} />
+      ))}
+    </>
+  );
+};
+export default Tooltip1;

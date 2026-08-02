@@ -1,0 +1,70 @@
+.ReactiveTextBoxes {
+  max-width: 820px;
+  color: #202d2b;
+
+  h2 {
+    margin: 0 0 10px;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+  }
+
+  .intro {
+    margin: 0 0 36px;
+    color: #61716d;
+    line-height: 1.7;
+  }
+
+  .example {
+    margin-bottom: 30px;
+  }
+
+  h3 {
+    margin: 0 0 10px;
+    font-size: 1rem;
+
+    sub {
+      color: #61716d;
+      font-size: 0.85em;
+      font-weight: 400;
+    }
+  }
+
+  .container {
+    position: relative;
+    width: min(100%, 560px);
+    padding: 5px 10px;
+    border: 1px solid #9aaba5;
+    border-radius: 5px;
+    background: #fff;
+
+    &:has(textarea:focus) {
+      border-color: #a04b31;
+      outline: 1px solid #a04b31;
+    }
+  }
+
+  textarea {
+    display: block;
+    width: 100%;
+    min-height: 66px;
+    max-height: 220px;
+    box-sizing: border-box;
+    padding: 0;
+    overflow-y: scroll;
+    border: 0;
+    outline: 0;
+    resize: none;
+    font: inherit;
+    font-size: 13px;
+    line-height: 22px;
+  }
+
+  .replica {
+    position: absolute;
+    z-index: -1;
+    width: calc(100% - 10px);
+    height: 0;
+    min-height: auto;
+    visibility: hidden;
+    opacity: 0;
+  }
+}

@@ -19,7 +19,7 @@ export type ChapterId =
   | "ch16"
   | "ch17";
 
-export type MemberId = "yeji" | "jihyun" | "juhye" | "juntae" | "changjun";
+export type MemberId = "yeji" | "jihyeon" | "juhye" | "juntae" | "changjun";
 
 export interface StudyMember {
   id: MemberId;

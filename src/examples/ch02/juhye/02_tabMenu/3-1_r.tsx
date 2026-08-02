@@ -5,7 +5,6 @@ import data from "./data";
 type TabItem = {
   id: string;
   title: string;
-  description: string;
   isCurrent: boolean;
   onToggle: () => void;
 };

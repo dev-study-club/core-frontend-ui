@@ -5,7 +5,6 @@ import data from "./data";
 type TabItem = {
   id: string;
   title: string;
-  description: string;
   isCurrent: boolean;
   onToggle: () => void;
 };
@@ -27,7 +26,10 @@ const TabItem = ({ id, title, isCurrent, onToggle }: TabItem) => {
 const TabPanel = ({
   isCurrent,
   description,
-}: Pick<TabItem, "description" | "isCurrent">) => {
+}: {
+  description: string;
+  isCurrent: boolean;
+}) => {
   const [animationClassName, setAnimationClassName] = useState<string | null>(
     isCurrent ? "current" : null,
   );

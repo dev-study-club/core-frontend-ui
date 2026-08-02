@@ -20,12 +20,21 @@ const AccordionItem = ({
   const descRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const $desc = descRef.current!;
-    $desc.addEventListener("beforematch", onToggle);
+    const $desc = descRef.current;
+    $desc?.addEventListener("beforematch", onToggle);
     return () => {
-      $desc.removeEventListener("beforematch", onToggle);
+      $desc?.removeEventListener("beforematch", onToggle);
     };
   }, [onToggle]);
+
+  useEffect(() => {
+    if (isCurrent) {
+      descRef.current?.removeAttribute("hidden");
+      return;
+    }
+
+    descRef.current?.setAttribute("hidden", "until-found");
+  }, [isCurrent]);
 
   return (
     <li className={cx("item", "item3", { current: isCurrent })}>
@@ -36,7 +45,6 @@ const AccordionItem = ({
         <div
           className={cx("description")}
           ref={descRef}
-          HIDDEN={isCurrent ? undefined : "until-found"}
         >
           {description}
         </div>

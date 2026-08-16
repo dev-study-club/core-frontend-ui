@@ -13,6 +13,8 @@ import JihyeonChapter03Example from "@/examples/ch03/jihyeon/Example";
 import YejiChapter03Example from "@/examples/ch03/yeji/Example";
 import ChangjunChapter04Example from "@/examples/ch04/changjun/Example";
 import JihyeonChapter04Example from "@/examples/ch04/jihyeon/Example";
+import ChangjunChapter05Example from "@/examples/ch05/changjun/Example";
+import ChangjunChapter06Example from "@/examples/ch06/changjun/Example";
 import type { ChapterId, ExampleEntry, MemberId } from "@/types/study";
 
 export const exampleEntries: ExampleEntry[] = [
@@ -122,6 +124,22 @@ export const exampleEntries: ExampleEntry[] = [
     description:
       "내용에 맞춰 높이가 늘어나는 textarea를 canvas·replica·scrollHeight·field-sizing으로 비교한 예제 모음입니다.",
     Component: ChangjunChapter04Example,
+  },
+  {
+    chapterId: "ch05",
+    memberId: "changjun",
+    title: "말줄임",
+    description:
+      "-webkit-line-clamp로 자른 텍스트에서 '더보기' 버튼을 언제 보여줄지, 줄 수를 canvas·replica·scrollHeight로 재어 비교한 예제 모음입니다.",
+    Component: ChangjunChapter05Example,
+  },
+  {
+    chapterId: "ch06",
+    memberId: "changjun",
+    title: "폼 컨트롤",
+    description:
+      "구분 기호 자동 삽입 인풋과, 같은 회원가입 폼을 비제어·제어 두 방식으로 만들어 값과 검증의 소유권을 비교한 예제 모음입니다.",
+    Component: ChangjunChapter06Example,
   },
 ];
 

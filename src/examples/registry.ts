@@ -13,6 +13,8 @@ import JihyeonChapter03Example from "@/examples/ch03/jihyeon/Example";
 import YejiChapter03Example from "@/examples/ch03/yeji/Example";
 import ChangjunChapter04Example from "@/examples/ch04/changjun/Example";
 import JihyeonChapter04Example from "@/examples/ch04/jihyeon/Example";
+import JihyeonChapter05Example from "@/examples/ch05/jihyeon/Example";
+import JihyeonChapter06Example from "@/examples/ch06/jihyeon/Example";
 import ChangjunChapter05Example from "@/examples/ch05/changjun/Example";
 import ChangjunChapter06Example from "@/examples/ch06/changjun/Example";
 import type { ChapterId, ExampleEntry, MemberId } from "@/types/study";
@@ -124,6 +126,22 @@ export const exampleEntries: ExampleEntry[] = [
     description:
       "내용에 맞춰 높이가 늘어나는 textarea를 canvas·replica·scrollHeight·field-sizing으로 비교한 예제 모음입니다.",
     Component: ChangjunChapter04Example,
+  },
+  {
+    chapterId: "ch05",
+    memberId: "jihyeon",
+    title: "Chapter 05 말 줄임",
+    description:
+      "canvas 측정·replica·scrollHeight·바닐라 구현으로 비교한 line-clamp 예제 모음입니다.",
+    Component: JihyeonChapter05Example,
+  },
+  {
+    chapterId: "ch06",
+    memberId: "jihyeon",
+    title: "Chapter 06 폼 컨트롤",
+    description:
+      "구분 기호 자동 삽입 인풋과 비제어 폼 유효성 검증 예제 모음입니다.",
+    Component: JihyeonChapter06Example,
   },
   {
     chapterId: "ch05",

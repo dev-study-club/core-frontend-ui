@@ -1,8 +1,8 @@
 import cx from "./cx";
 
-import { DigitSeperatedInput } from "./temp";
 import Form1 from "./2-1_uncontrolled";
 import Form2 from "./2-2_controlled";
+import { DigitSeperatedInput } from "./1_digitSeperatedInput";
 
 export default function JihyeonChapter06Example() {
   return (

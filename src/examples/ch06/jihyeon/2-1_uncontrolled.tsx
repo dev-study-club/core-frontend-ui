@@ -1,5 +1,5 @@
 import type { FormEvent } from "react";
-import { DigitSeperatedInput } from "./temp";
+import { DigitSeperatedInput } from "./1_digitSeperatedInput";
 
 type FormElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
 
@@ -54,7 +54,7 @@ const formController: Record<string, FormControl> = {
   },
   salary: {
     transformData: (formData) =>
-      (formData.get("salary") as string).replace(/,/g, ""), /* 1 */
+      (formData.get("salary") as string).replace(/,/g, "") /* 1 */,
   },
 };
 

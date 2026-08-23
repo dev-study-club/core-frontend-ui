@@ -17,6 +17,8 @@ import JihyeonChapter05Example from "@/examples/ch05/jihyeon/Example";
 import JihyeonChapter06Example from "@/examples/ch06/jihyeon/Example";
 import ChangjunChapter05Example from "@/examples/ch05/changjun/Example";
 import ChangjunChapter06Example from "@/examples/ch06/changjun/Example";
+import ChangjunChapter07Example from "@/examples/ch07/changjun/Example";
+import ChangjunChapter08Example from "@/examples/ch08/changjun/Example";
 import type { ChapterId, ExampleEntry, MemberId } from "@/types/study";
 
 export const exampleEntries: ExampleEntry[] = [
@@ -158,6 +160,22 @@ export const exampleEntries: ExampleEntry[] = [
     description:
       "구분 기호 자동 삽입 인풋과, 같은 회원가입 폼을 비제어·제어 두 방식으로 만들어 값과 검증의 소유권을 비교한 예제 모음입니다.",
     Component: ChangjunChapter06Example,
+  },
+  {
+    chapterId: "ch07",
+    memberId: "changjun",
+    title: "이미지 지연 로딩",
+    description:
+      "직접 좌표 계산, IntersectionObserver, 네이티브 loading 속성, Vanilla 구현을 비교한 이미지 지연 로딩 예제입니다.",
+    Component: ChangjunChapter07Example,
+  },
+  {
+    chapterId: "ch08",
+    memberId: "changjun",
+    title: "페이지네이션과 무한 스크롤",
+    description:
+      "전통 페이지네이션, React Transition 비교, IntersectionObserver 무한 스크롤과 content-visibility 최적화 예제입니다.",
+    Component: ChangjunChapter08Example,
   },
 ];
 
